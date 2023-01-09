@@ -1,7 +1,8 @@
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
+import Link from 'next/link'
 
-const AdminLayout = () => {
+const AdminLayout = props => {
     return (
         <AppLayout
             header={
@@ -13,7 +14,7 @@ const AdminLayout = () => {
             <Head>
                 <title>Laravel - Dashboard</title>
             </Head>
-
+<div className='flex flex-col'>
             <nav className="main-header navbar navbar-expand navbar-white navbar-light">
     <ul className="navbar-nav">
       <li className="nav-item">
@@ -137,7 +138,12 @@ const AdminLayout = () => {
         </a>
       </li> */}
     </ul>
-  </nav>
+
+        </nav>
+          <div className='test ml-[250px]'>
+              {props.children}
+            </div>
+      </div>
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
     <a href="index3.html" className="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" />
@@ -188,13 +194,20 @@ const AdminLayout = () => {
                   <p>Add New</p>
                 </a>
               </li>
+              <li className="nav-item">
+                <Link href="../categories" className="nav-link">
+                  <i className="far fa-circle nav-icon !text-[10px]"></i>
+                  <p>Categories</p>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
       </nav>
     </div>
   </aside>
-            
+     
+  
         </AppLayout>
     )
 }
