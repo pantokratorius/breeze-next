@@ -1,16 +1,24 @@
 import { useRouter } from 'next/router'
 import AdminLayout from '@/Layouts/AdminLayout'
+import Link from 'next/link'
  
+export async function getServerSideProps() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories`)
+    const data = await res.json()
+  
+    return { props: { data } }
+  }
 
-const Categories = () => {
-     
+
+const Categories = ({data}) => {
+
     return (
         <AdminLayout>
             <div className="">
                 <section className="content-header">
                     <div className="container-fluid">
                         <div className="row mb-2">
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <h1>Kategorijos</h1>
                             </div>
                             <div className="col-sm-6">
@@ -31,7 +39,7 @@ const Categories = () => {
                     <div className="card">
                         <div className="card-header">
                             <h3 className="card-title">Kategorijų sąrašas</h3>
-                            <div class="card-tools">
+                            <div className="card-tools">
                                 <button
                                     type="button"
                                     className="btn btn-tool"
@@ -55,62 +63,31 @@ const Categories = () => {
                                         <th style={{width: "1%", textAlign:'center'}}>
                                             <div className="custom-control custom-checkbox">
                                                 <input id="19c90c1305d92" className="custom-control-input" type="checkbox"/>
-                                                <label for="19c90c1305d92" className="custom-control-label"/>
+                                                <label htmlFor="19c90c1305d92" className="custom-control-label"/>
                                             </div>
                                         </th>
                                         <th style={{width: "20%"}}>Pavadinimas</th>
-                                        <th style={{width: "30%"}}>Team Members</th>
-                                        <th>Project Progress</th>
+                                        <th></th>
+                                        <th></th>
                                         <th
                                             style={{width: "8%"}}
                                             className="text-center">
-                                            Status
+                                            
                                         </th>
                                         <th style={{width: "20%"}}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div className="custom-control custom-checkbox">
-                                                <input id="19c90c1305d921" className="custom-control-input" type="checkbox"/>
-                                                <label for="19c90c1305d921" className="custom-control-label"/>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            AdminLTE v3
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td className="project_progress">
-                                            
-                                        </td>
-                                        <td className="project-state">
-                                           
-                                        </td>
-                                        <td className="project-actions text-right">
-                                            <a className="btn btn-info btn-sm mr-2" href="#">
-                                                <i className="fas fa-pencil-alt"></i>
-                                                Edit
-                                            </a>
-                                            <a
-                                                className="btn btn-danger btn-sm"
-                                                href="#">
-                                                <i className="fas fa-trash"></i>
-                                                Delete
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                    {data.map(item=>(
+                                        <tr key={item.id}>
                                         <td>
                                             <div className="custom-control custom-checkbox">
                                                 <input id="19c90c1305d9223" className="custom-control-input" type="checkbox"/>
-                                                <label for="19c90c1305d9223" className="custom-control-label"/>
+                                                <label htmlFor="19c90c1305d9223" className="custom-control-label"/>
                                             </div>
                                         </td>
                                         <td>
-                                            <a>AdminLTE v3</a>
+                                            <a>{item.name}</a>
                                         </td>
                                         <td>
                                             
@@ -122,20 +99,20 @@ const Categories = () => {
                                            
                                         </td>
                                         <td className="project-actions text-right">
-                                            <a
+                                            <Link
                                                 className="btn btn-info btn-sm mr-2"
-                                                href="#">
+                                                href={`/category/${item.id}`}>
                                                 <i className="fas fa-pencil-alt"></i>
-                                                Edit
-                                            </a>
+                                            </Link>
                                             <a
                                                 className="btn btn-danger btn-sm"
                                                 href="#">
                                                 <i className="fas fa-trash"></i>
-                                                Delete
                                             </a>
                                         </td>
                                     </tr>
+                                    ))}
+                                    
                                     
                                 </tbody>
                             </table>

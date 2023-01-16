@@ -18,7 +18,7 @@ const AdminLayout = props => {
               {props.children}
             </div>
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" className="brand-link">
+    <a href="/dashboard" className="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" />
       <span className="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -56,13 +56,13 @@ const AdminLayout = props => {
             </a>
             <ul className="nav nav-treeview" style={{display:'block'}}>
               <li className="nav-item">
-                <a href="../examples/invoice.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="far fa-circle nav-icon !text-[10px]"></i>
                   <p>All Pages</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="../examples/invoice.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="far fa-circle nav-icon !text-[10px]"></i>
                   <p>Add New</p>
                 </a>
