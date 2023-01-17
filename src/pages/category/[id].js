@@ -3,7 +3,7 @@ import AdminLayout from '@/Layouts/AdminLayout'
  
 
 
-const Category = ({id}) => { console.log(id);
+const Category = ({id}) => { 
 
     return (
         <AdminLayout>

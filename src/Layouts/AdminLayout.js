@@ -15,7 +15,28 @@ const AdminLayout = props => {
                 <title>Laravel - Dashboard</title>
             </Head>
           <div className='test ml-[250px] p-2'>
-              {props.children}
+            <div className="">
+                  <section className="content-header">
+                      <div className="container-fluid">
+                          <div className="row mb-2">
+                              <div className="col-sm-6">
+                                  <h1>Kategorijos</h1>
+                              </div>
+                              <div className="col-sm-6">
+                                  <ol className="breadcrumb float-sm-right">
+                                      <li className="breadcrumb-item">
+                                          <a href="#">Home</a>
+                                      </li>
+                                      <li className="breadcrumb-item active">
+                                          Projects
+                                      </li>
+                                  </ol>
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+                {props.children}
+              </div>
             </div>
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/dashboard" className="brand-link">
